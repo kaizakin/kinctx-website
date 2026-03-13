@@ -1,6 +1,10 @@
+import FAQSection from "./components/faq-section";
 import HeroSection from "./components/hero-section";
+import InstallCTA from "./components/install-cta";
 import Navbar from "./components/navbar";
+import StatementPanel from "./components/statement-panel";
 import VideoShowcase from "./components/video-showcase";
+import WorkflowArt from "./components/workflow-art";
 
 const FEATURED_REPO = {
   owner: "vercel",
@@ -31,7 +35,7 @@ export default function Home() {
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar owner={FEATURED_REPO.owner} repo={FEATURED_REPO.repo} />
 
-          <main className="flex-1 w-full max-w-[1200px] mx-auto px-6 pb-16 pt-36 sm:px-10 sm:pt-40 md:px-16 md:pt-44">
+          <main className="flex-1 w-full max-w-[1200px] mx-auto px-6 pb-16 pt-28 sm:px-10 sm:pt-32 md:px-16 md:pt-36">
             <HeroSection />
             <VideoShowcase />
 
@@ -80,28 +84,17 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="rounded-[2rem] border border-black/8 bg-[#1f1c18] p-5 text-sm text-stone-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff6c5f]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#f5c451]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#63c655]" />
-                </div>
-                <div className="space-y-3 font-mono text-[13px] leading-6 text-stone-300">
-                  <p>$ kin add &quot;kubectl logs deployment/api -f&quot; --tag debugging</p>
-                  <p className="text-stone-500">Saved with note: stream API pod logs in real time</p>
-                  <p>$ kin find api logs</p>
-                  <p className="text-[#adeed9]">1. kubectl logs deployment/api -f</p>
-                  <p>$ kin run 1</p>
-                </div>
+              <div className="md:col-span-2">
+                <WorkflowArt />
               </div>
             </section>
-          </main>
 
-          <footer className="py-8 text-center text-sm text-neutral-400 relative z-20">
-            <p>© {new Date().getFullYear()} kinctx. All rights reserved.</p>
-          </footer>
+            <FAQSection />
+            <InstallCTA />
+          </main>
         </div>
       </div>
+          <StatementPanel />
     </div>
   );
 }

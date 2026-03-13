@@ -114,7 +114,7 @@ export default function Navbar({ owner, repo }: NavbarProps) {
                 transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 className="text-xs text-white/58"
               >
-                Second brain for the terminal
+                Second brain built for the terminal
               </motion.p>
             </div>
           </Link>
