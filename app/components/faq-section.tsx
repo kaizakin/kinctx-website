@@ -8,7 +8,7 @@ const faqItems = [
   {
     question: "Where are my snippets stored?",
     answer:
-      "kin keeps your snippets in a local SQLite database on your machine. A typical path is ~/.local/share/kin/snippets.db, which gives you fast lookups without pushing your command history to a hosted service.",
+      "kin keeps your snippets in a local SQLite database on your machine. A typical path is ~/.config/kinctx, which gives you fast lookups.",
     accent: "#adeed9",
   },
   {
@@ -20,7 +20,7 @@ const faqItems = [
   {
     question: "How do I handle environment variables?",
     answer:
-      "Use placeholders inside saved snippets and let kin resolve them when you run the command. That keeps secrets out of the stored text while still letting templates like {{API_KEY}} or {{DATABASE_URL}} drop into place at execution time.",
+      "Use placeholders inside saved snippets and let kin resolve them when you run the command. That keeps secrets out of the stored text while still letting templates like ${API_KEY:=myapikey} or ${DATABASE_URL:=myURL} drop into place at execution time.",
     accent: "#f4d28d",
   },
 ] as const;

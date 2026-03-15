@@ -47,11 +47,10 @@ export default function VideoShowcase() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ delay: 0.22, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto mt-10 max-w-6xl rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(140,97,255,0.92),rgba(45,95,232,0.86)_32%,rgba(74,195,210,0.75)_68%,rgba(173,238,217,0.82))] p-[1px] shadow-[0_30px_100px_rgba(84,88,255,0.26)]"
+          className="relative mx-auto mt-10 max-w-6xl"
         >
-          <div className="relative overflow-hidden rounded-[calc(2rem-1px)] bg-[#141310] p-4 sm:p-6">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_42%)]" />
-            <div className="relative overflow-hidden rounded-[1.6rem] border border-white/8 bg-black/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#141310]/60 p-2 sm:p-3">
+            <div className="relative overflow-hidden rounded-[1.55rem] bg-black/45 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
               <video
                 className="aspect-video w-full object-cover"
                 src={SAMPLE_VIDEO_URL}

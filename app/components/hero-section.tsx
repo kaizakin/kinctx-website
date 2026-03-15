@@ -7,8 +7,8 @@ const container: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.14,
+      staggerChildren: 0.2,
+      delayChildren: 0.28,
     },
   },
 };
@@ -24,7 +24,7 @@ const item: Variants = {
     y: 0,
     filter: "blur(0px)",
     transition: {
-      duration: 0.7,
+      duration: 1.05,
       ease: [0.22, 1, 0.36, 1] as const,
     },
   },
@@ -70,10 +70,11 @@ export default function HeroSection() {
           className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row"
         >
           <Link
-            href="#features"
+            href="https://github.com/kaizakin/kinctx#usage-first"
+            target="blank"
             className="inline-flex h-12 items-center justify-center rounded-2xl bg-[#1e1b17] px-8 text-sm font-medium text-white shadow-[0_18px_40px_rgba(30,27,23,0.12)] transition-all hover:-translate-y-0.5 hover:bg-[#151310]"
           >
-            Explore Features
+            Explore Documentation
           </Link>
           <Link
             href="#workflow"

@@ -122,7 +122,7 @@ export default function Navbar({ owner, repo }: NavbarProps) {
           <div className="flex items-center gap-2 sm:gap-3">
             <GithubRepoBadge owner={owner} repo={repo} />
             <Link
-              href="#features"
+              href="#install"
               className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-[#8c61ff] px-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#7c54eb] hover:shadow-[0_10px_24px_rgba(140,97,255,0.28)]"
             >
               <span className="hidden sm:inline">Get Started</span>

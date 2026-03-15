@@ -1,3 +1,4 @@
+import BinaryCallout from "./components/binary-callout";
 import FAQSection from "./components/faq-section";
 import HeroSection from "./components/hero-section";
 import InstallCTA from "./components/install-cta";
@@ -7,8 +8,8 @@ import VideoShowcase from "./components/video-showcase";
 import WorkflowArt from "./components/workflow-art";
 
 const FEATURED_REPO = {
-  owner: "vercel",
-  repo: "next.js",
+  owner: "kaizakin",
+  repo: "kinctx",
 };
 
 export default function Home() {
@@ -43,7 +44,7 @@ export default function Home() {
               {[
                 {
                   title: "Capture in seconds",
-                  text: "Save commands the moment they prove useful, with room for context and plain-language notes.",
+                  text: "Turn history into templates. Save complex commands using ${VAR:=default}, inspired by shell parameter expansion so you don’t have to learn a new syntax.",
                 },
                 {
                   title: "Recall by intent",
@@ -51,7 +52,7 @@ export default function Home() {
                 },
                 {
                   title: "Execute with confidence",
-                  text: "Bring snippets back into the terminal already explained, organized, and ready to run.",
+                  text: "Seamless Execution. Populate placeholders at runtime and let Kin bridge the gap between thought and terminal.",
                 },
               ].map((item) => (
                 <article
@@ -66,6 +67,8 @@ export default function Home() {
                 </article>
               ))}
             </section>
+
+            <BinaryCallout />
 
             <section
               id="workflow"

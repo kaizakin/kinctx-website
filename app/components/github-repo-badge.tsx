@@ -34,6 +34,7 @@ export default function GithubRepoBadge({
       try {
         const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
           signal: controller.signal,
+          next: { revalidate: 3600 } // Revalidate at most once per hour
         });
 
         if (!response.ok) {
