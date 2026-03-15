@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const SAMPLE_VIDEO_URL =
-  "https://res.cloudinary.com/demo/video/upload/f_auto,q_auto:good/dog.mp4";
+  "https://res.cloudinary.com/dzflkog8z/video/upload/f_auto,q_auto,vc_auto/v1773579348/kinctx_lmptvp.mp4";
 const SAMPLE_POSTER_URL =
-  "https://res.cloudinary.com/demo/video/upload/so_2,f_jpg,q_auto,dog.jpg";
+  "https://res.cloudinary.com/dzflkog8z/video/upload/so_0,f_auto,q_auto/v1773579348/kinctx_lmptvp.jpg";
 
 export default function VideoShowcase() {
   return (
@@ -59,7 +59,6 @@ export default function VideoShowcase() {
                 muted
                 loop
                 playsInline
-                controls
                 preload="metadata"
               />
             </div>
