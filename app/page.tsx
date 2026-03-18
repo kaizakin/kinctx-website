@@ -97,7 +97,7 @@ export default function Home() {
           </main>
         </div>
       </div>
-          <StatementPanel />
+      <StatementPanel />
     </div>
   );
 }

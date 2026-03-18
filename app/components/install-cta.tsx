@@ -2,11 +2,13 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Copy } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 
-const INSTALL_COMMAND = "brew install kaizakin/tap/kin";
-const FZF_COMMAND = "brew install fzf";
+const UNIX_INSTALL_COMMAND = "brew install kaizakin/tap/kin";
+const UNIX_FZF_COMMAND = "brew install fzf";
+const WINDOWS_FZF_COMMAND = "scoop bucket add main\nscoop install main/fzf";
+const WINDOWS_INSTALL_COMMAND =
+  "scoop bucket add kin https://github.com/kaizakin/kinctx-scoop\nscoop install kin";
 const ease = [0.22, 1, 0.36, 1] as const;
 const tabs = [
   { id: "unix", label: "macOS + Linux" },
@@ -160,7 +162,7 @@ export default function InstallCTA() {
 
                             <motion.button
                               type="button"
-                              onClick={() => handleCopy(FZF_COMMAND, "fzf")}
+                              onClick={() => handleCopy(UNIX_FZF_COMMAND, "fzf")}
                               aria-label={copiedFzf ? "fzf command copied" : "Copy fzf install command"}
                               whileTap={{ scale: 0.94 }}
                               animate={{
@@ -187,7 +189,7 @@ export default function InstallCTA() {
                           </div>
                         </div>
                         <code className="block whitespace-nowrap font-mono text-sm text-stone-200 sm:text-[15px]">
-                          {FZF_COMMAND}
+                          {UNIX_FZF_COMMAND}
                         </code>
                       </div>
 
@@ -211,7 +213,7 @@ export default function InstallCTA() {
 
                             <motion.button
                               type="button"
-                              onClick={() => handleCopy(INSTALL_COMMAND, "install")}
+                              onClick={() => handleCopy(UNIX_INSTALL_COMMAND, "install")}
                               aria-label={copiedInstall ? "kin install command copied" : "Copy kin install command"}
                               whileTap={{ scale: 0.94 }}
                               animate={{
@@ -238,7 +240,7 @@ export default function InstallCTA() {
                           </div>
                         </div>
                         <code className="block whitespace-nowrap font-mono text-sm text-stone-300 sm:text-[15px]">
-                          {INSTALL_COMMAND}
+                          {UNIX_INSTALL_COMMAND}
                         </code>
                       </div>
                     </motion.div>
@@ -253,45 +255,122 @@ export default function InstallCTA() {
                     >
                       <div>
                         <p className="text-xs uppercase tracking-[0.24em] text-stone-500">
-                          Windows support
+                          Install steps
                         </p>
                         <div className="mt-3 flex flex-wrap gap-2">
-                          <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-stone-300">
-                            Work in progress
+                          <span className="rounded-full border border-[#adeed9]/25 bg-[#adeed9]/10 px-3 py-1 text-xs font-medium text-[#d6f7ec]">
+                            Scoop required
                           </span>
                           <span className="rounded-full border border-[#d8c6ff]/25 bg-[#d8c6ff]/10 px-3 py-1 text-xs font-medium text-[#e6dbff]">
-                            Manual workaround available
+                            Native Windows install
                           </span>
                         </div>
-                      </div>
-
-                      <div className="rounded-[1rem] border border-white/6 bg-black/40 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-                        <p className="text-sm leading-7 text-stone-300">
-                          Native Windows install is still being worked on. Meanwhile, you can check
-                          the{" "}
-                          <Link
-                            href="https://github.com/kaizakin/kinctx/releases/tag/v1.0.0"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="font-medium text-[#d8c6ff] underline decoration-white/20 underline-offset-4 transition-colors hover:text-white"
-                          >
-                            Releases section
-                          </Link>
-                          , download the binary, extract it, and place the executable somewhere on
-                          your <code className="font-mono text-stone-100">PATH</code>.
+                        <p className="mt-4 text-sm leading-7 text-stone-400">
+                          Open a <code className="font-mono text-stone-200">PowerShell</code>{" "}
+                          terminal, then run these commands in order.
                         </p>
                       </div>
 
-                      <div className="rounded-[1rem] border border-white/6 bg-white/[0.03] p-4">
-                        <p className="text-xs uppercase tracking-[0.24em] text-stone-500">
-                          Temporary path
-                        </p>
-                        <ol className="mt-3 space-y-2 text-sm leading-7 text-stone-400">
-                          <li>1. Open the latest release and download the Windows binary.</li>
-                          <li>2. Extract it to a folder you control.</li>
-                          <li>3. Add that folder to your system <code className="font-mono text-stone-200">PATH</code>.</li>
-                          <li>4. Run <code className="font-mono text-stone-200">kin init</code> to create the database.</li>
-                        </ol>
+                      <div className="overflow-x-auto rounded-[1rem] border border-white/6 bg-black/40 px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                        <div className="mb-3 flex items-center justify-between gap-3">
+                          <p className="text-xs uppercase tracking-[0.24em] text-stone-500">
+                            Install fzf first
+                          </p>
+                          <div className="flex items-center gap-2">
+                            <motion.span
+                              initial={false}
+                              animate={{
+                                opacity: copiedFzf ? 1 : 0,
+                                y: copiedFzf ? 0 : 6,
+                              }}
+                              transition={{ duration: 0.25, ease }}
+                              className="text-xs font-medium text-[#adeed9]"
+                            >
+                              Copied
+                            </motion.span>
+
+                            <motion.button
+                              type="button"
+                              onClick={() => handleCopy(WINDOWS_FZF_COMMAND, "fzf")}
+                              aria-label={copiedFzf ? "fzf command copied" : "Copy fzf install command"}
+                              whileTap={{ scale: 0.94 }}
+                              animate={{
+                                boxShadow: copiedFzf
+                                  ? "0 0 0 8px rgba(173,238,217,0.10)"
+                                  : "0 0 0 0 rgba(173,238,217,0)",
+                              }}
+                              transition={{ duration: 0.3, ease }}
+                              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-[#8c61ff] text-white transition-colors duration-300 hover:bg-[#7c54eb]"
+                            >
+                              <AnimatePresence mode="wait" initial={false}>
+                                <motion.span
+                                  key={copiedFzf ? "check-fzf-windows" : "copy-fzf-windows"}
+                                  initial={{ opacity: 0, scale: 0.7, rotate: -12 }}
+                                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                                  exit={{ opacity: 0, scale: 0.7, rotate: 12 }}
+                                  transition={{ duration: 0.22, ease }}
+                                  className="inline-flex"
+                                >
+                                  {copiedFzf ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                                </motion.span>
+                              </AnimatePresence>
+                            </motion.button>
+                          </div>
+                        </div>
+                        <code className="block whitespace-pre-wrap font-mono text-sm text-stone-200 sm:text-[15px]">
+                          {WINDOWS_FZF_COMMAND}
+                        </code>
+                      </div>
+
+                      <div className="overflow-x-auto rounded-[1rem] border border-white/6 bg-black/25 px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                        <div className="mb-3 flex items-center justify-between gap-3">
+                          <p className="text-xs uppercase tracking-[0.24em] text-stone-500">
+                            Then install kin
+                          </p>
+                          <div className="flex items-center gap-2">
+                            <motion.span
+                              initial={false}
+                              animate={{
+                                opacity: copiedInstall ? 1 : 0,
+                                y: copiedInstall ? 0 : 6,
+                              }}
+                              transition={{ duration: 0.25, ease }}
+                              className="text-xs font-medium text-[#adeed9]"
+                            >
+                              Copied
+                            </motion.span>
+
+                            <motion.button
+                              type="button"
+                              onClick={() => handleCopy(WINDOWS_INSTALL_COMMAND, "install")}
+                              aria-label={copiedInstall ? "kin install command copied" : "Copy kin install command"}
+                              whileTap={{ scale: 0.94 }}
+                              animate={{
+                                boxShadow: copiedInstall
+                                  ? "0 0 0 8px rgba(173,238,217,0.10)"
+                                  : "0 0 0 0 rgba(173,238,217,0)",
+                              }}
+                              transition={{ duration: 0.3, ease }}
+                              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-[#8c61ff] text-white transition-colors duration-300 hover:bg-[#7c54eb]"
+                            >
+                              <AnimatePresence mode="wait" initial={false}>
+                                <motion.span
+                                  key={copiedInstall ? "check-install-windows" : "copy-install-windows"}
+                                  initial={{ opacity: 0, scale: 0.7, rotate: -12 }}
+                                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                                  exit={{ opacity: 0, scale: 0.7, rotate: 12 }}
+                                  transition={{ duration: 0.22, ease }}
+                                  className="inline-flex"
+                                >
+                                  {copiedInstall ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                                </motion.span>
+                              </AnimatePresence>
+                            </motion.button>
+                          </div>
+                        </div>
+                        <code className="block whitespace-pre-wrap font-mono text-sm text-stone-300 sm:text-[15px]">
+                          {WINDOWS_INSTALL_COMMAND}
+                        </code>
                       </div>
                     </motion.div>
                   )}
